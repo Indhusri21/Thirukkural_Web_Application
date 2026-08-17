@@ -14,6 +14,7 @@ A lightweight web application built to search, display, and explore Thirukkural 
 
 ## PROJECT STRUCTURE
 
+```text
 Thirukkural_Web_Application/
 ├── Screenshot/
 │   └── Thirukkural.png
@@ -30,12 +31,19 @@ API/Data Source: Thirukkural JSON / API integration
 ## How to Run
 
 ### Install Required Libraries
-Bash
+
+```bash
 pip install flask requests
+```
 
 ### Run the Application
-Bash
-python app.py
+
+```bash
+python main.py
+```
 
 ### Open in Browser
-Navigate to http://127.0.0.1:5000 in your web browser.
+
+```text
+http://127.0.0.1:5000
+```

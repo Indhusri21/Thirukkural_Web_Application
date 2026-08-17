@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+    <meta charset="UTF-8">
+    <title>திருக்குறள் தேடகம்</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f1e9;
+            color: #171616;
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #750303;
+            /* Deep Red */
+            text-align: center;
+        }
+
+        .search-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid hsl(214, 83%, 75%);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+
+        button {
+            background-color: #5dade2;
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 9px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #0a5587;
+        }
+
+        .card {
+            background-color: #79b6e1;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #edf3f2;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .kural-text {
+            color: #011527;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.5;
+            white-space: pre-line;
+        }
+
+        .heading-tam {
+            color: #ff0404;
+        }
+
+        .heading-eng {
+            color: #120167;
+            /* Soft Blue */
+        }
+
+        .error {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>திருக்குறள் தேடகம்</h1>
+
+    <div class="search-box">
+        <label for="kuralInput"> திருக்குறள் எண்(1 - 1330):</label>
+        <input type="number" id="kuralInput" min="1" max="1330">
+        <button onclick="fetchKural()">Get Kural</button>
+    </div>
+
+    <p id="errorMessage" class="error"></p>
+
+    <div id="result" class="card" style="display: none;">
+        <h2>திருக்குறள்:</h2>
+        <p id="kuralText" class="kural-text"></p>
+
+        <h3 class="heading-tam">தமிழ் உரை (Tamil Meaning):</h3>
+        <p id="tamilMeaning"></p>
+
+        <h3 class="heading-eng">English Meaning:</h3>
+        <p id="englishMeaning"></p>
+    </div>
+
+    <script>
+        function fetchKural() {
+            const number = document.getElementById('kuralInput').value;
+            const errorElement = document.getElementById('errorMessage');
+            const resultDiv = document.getElementById('result');
+
+            errorElement.innerText = "";
+            resultDiv.style.display = "none";
+
+            if (!number || number < 1 || number > 1330) {
+                errorElement.innerText = "Please enter a valid number between 1 and 1330.";
+                return;
+            }
+
+            fetch('/kural/' + number)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        errorElement.innerText = data.error;
+                    } else {
+                        document.getElementById('kuralText').innerText = data.kural.join('\n');
+                        document.getElementById('tamilMeaning').innerText = data.tamil_meaning;
+                        document.getElementById('englishMeaning').innerText = data.english_meaning;
+                        resultDiv.style.display = "block";
+                    }
+                })
+                .catch(err => {
+                    errorElement.innerText = "Something went wrong while fetching data.";
+                });
+        }
+    </script>
+
+</body>
+
+</html>

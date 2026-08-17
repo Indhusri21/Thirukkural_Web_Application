@@ -34,11 +34,12 @@ API/Data Source: Thirukkural JSON / API integration
 
 ```bash
 pip install flask requests
+```
 
 ### Run the Application
 
 ```bash
-python main.py
+python app.py
 ```
 
 ### Open in Browser

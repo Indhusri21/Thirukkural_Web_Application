@@ -4,11 +4,13 @@ A lightweight web application built to search, display, and explore Thirukkural 
 
 
 ## FEATURES:
-    ***Instant Search:** Find any Thirukkural quickly by entering its specific Kural number.
-    **Bilingual Support:** Displays the original Tamil couplet alongside:
-        Detailed Tamil explanation (தமிழ் பொருள்).
-        Clear English translation and meaning.
-    **Responsive Design:** Clean and simple UI suitable for both desktop and mobile views.
+    >>Instant Search: Find any Thirukkural quickly by entering its specific Kural number.
+
+    >>Bilingual Support:Displays the original Tamil couplet alongside:
+        >Detailed Tamil explanation (தமிழ் பொருள்).
+        >Clear English translation and meaning.
+
+    >>Responsive Design:Clean and simple UI suitable for both desktop and mobile views.
 
 ## PROJECT STRUCTURE
 

@@ -34,7 +34,6 @@ API/Data Source: Thirukkural JSON / API integration
 
 ```bash
 pip install flask requests
-```
 
 ### Run the Application
 
